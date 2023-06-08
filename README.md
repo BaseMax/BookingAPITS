@@ -139,7 +139,90 @@ interface AvailabilitySlot {
 
 These models represent the entities used in the Booking System API. The User model represents a user account, the Booking model represents a booking made by a user, the Resource model represents a resource that can be booked, and the Availability model represents the availability of a resource on a specific date, divided into slots.
 
-## API Examples
+## API JSON Examples
+
+### Sign Up Request Example
+
+```json
+{
+  "name": "John Doe",
+  "email": "johndoe@example.com",
+  "password": "secretpassword"
+}
+```
+
+### Sign Up Response Example
+
+```json
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "isAdmin": false,
+    "createdAt": "2023-06-08T12:00:00Z",
+    "updatedAt": "2023-06-08T12:00:00Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+### Log In Request Example
+
+```json
+{
+  "email": "johndoe@example.com",
+  "password": "secretpassword"
+}
+```
+
+### Log In Response Example
+
+```json
+{
+  "user": {
+    "id": 1,
+    "name": "John Doe",
+    "email": "johndoe@example.com",
+    "isAdmin": false,
+    "createdAt": "2023-06-08T12:00:00Z",
+    "updatedAt": "2023-06-08T12:00:00Z"
+  },
+  "token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9..."
+}
+```
+
+### Create Booking Request Example
+
+```json
+{
+  "resourceId": 1,
+  "startDate": "2023-06-10T09:00:00Z",
+  "endDate": "2023-06-10T10:00:00Z",
+  "notes": "Need a consultation"
+}
+```
+
+### Create Booking Response Example
+
+```json
+{
+  "booking": {
+    "id": 1,
+    "userId": 1,
+    "resourceId": 1,
+    "startDate": "2023-06-10T09:00:00Z",
+    "endDate": "2023-06-10T10:00:00Z",
+    "notes": "Need a consultation",
+    "createdAt": "2023-06-08T12:00:00Z",
+    "updatedAt": "2023-06-08T12:00:00Z"
+  }
+}
+```
+
+Please note that these examples demonstrate the structure of JSON objects, and the actual values will depend on the data you provide in your requests and receive in your responses.
+
+## API Structure Examples
 
 Here's an example of the request and response bodies for the routes in the Booking System API:
 
