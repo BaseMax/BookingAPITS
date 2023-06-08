@@ -1,4 +1,4 @@
-# Booking System API
+# Booking System TypeScript API
 
 This is a RESTful API built using NestJS and TypeScript that enables users to reserve appointments, services, or resources through a booking system. The API provides functionality for managing availability, user authentication, and notifications for booking confirmations or reminders.
 
