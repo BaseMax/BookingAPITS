@@ -8,9 +8,9 @@ This is a RESTful API built using NestJS and TypeScript that enables users to re
 
 - **User Authentication:** Users can sign up, log in, and manage their bookings through authenticated routes. Authentication ensures that only authorized users can access protected endpoints.
 
-**Booking Reservations:** Users can reserve appointments, services, or resources by specifying the desired date, time slot, and any additional details. The API handles the validation of available slots and creates bookings accordingly.
+- **Booking Reservations:** Users can reserve appointments, services, or resources by specifying the desired date, time slot, and any additional details. The API handles the validation of available slots and creates bookings accordingly.
 
-**Notifications:** Users receive notifications for booking confirmations and reminders. This feature helps users stay informed about their upcoming reservations and reduces the risk of missed appointments.
+- **Notifications:** Users receive notifications for booking confirmations and reminders. This feature helps users stay informed about their upcoming reservations and reduces the risk of missed appointments.
 
 ## Installation
 
