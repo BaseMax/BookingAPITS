@@ -139,6 +139,254 @@ interface AvailabilitySlot {
 
 These models represent the entities used in the Booking System API. The User model represents a user account, the Booking model represents a booking made by a user, the Resource model represents a resource that can be booked, and the Availability model represents the availability of a resource on a specific date, divided into slots.
 
+## API Examples
+
+Here's an example of the request and response bodies for the routes in the Booking System API:
+
+### Sign Up (POST /api/auth/signup)
+
+**Request Body**
+
+```typescript
+interface SignUpRequest {
+  name: string;
+  email: string;
+  password: string;
+}
+```
+
+**Response Body**
+
+```typescript
+interface SignUpResponse {
+  user: User;
+  token: string;
+}
+```
+
+### Log In (POST /api/auth/login)
+
+**Request Body**
+
+```typescript
+interface LoginRequest {
+  email: string;
+  password: string;
+}
+```
+
+**Response Body**
+
+```typescript
+interface LoginResponse {
+  user: User;
+  token: string;
+}
+```
+
+### Log Out (POST /api/auth/logout)
+
+**No Request Body**
+
+**No Response Body**
+
+### Get All Bookings (GET /api/bookings)
+
+**No Request Body**
+
+**Response Body**
+
+```typescript
+interface GetAllBookingsResponse {
+  bookings: Booking[];
+}
+```
+
+### Create Booking (POST /api/bookings)
+
+**Request Body**
+
+```typescript
+interface CreateBookingRequest {
+  resourceId: number;
+  startDate: Date;
+  endDate: Date;
+  notes: string;
+}
+```
+
+**Response Body**
+
+```typescript
+interface CreateBookingResponse {
+  booking: Booking;
+}
+```
+
+### Get Booking by ID (GET /api/bookings/:id)
+
+**No Request Body**
+
+**Response Body**
+
+```typescript
+interface GetBookingResponse {
+  booking: Booking;
+}
+```
+
+### Update Booking by ID (PUT /api/bookings/:id)
+
+**Request Body**
+
+```typescript
+interface UpdateBookingRequest {
+  startDate?: Date;
+  endDate?: Date;
+  notes?: string;
+}
+```
+
+**Response Body**
+
+```typescript
+interface UpdateBookingResponse {
+  booking: Booking;
+}
+```
+
+### Delete Booking by ID (DELETE /api/bookings/:id)
+
+**No Request Body**
+
+**No Response Body**
+
+### Get Availability for Date (GET /api/availability)
+
+**Request Body**
+
+```typescript
+interface GetAvailabilityRequest {
+  date: Date;
+}
+```
+
+**Response Body**
+
+```typescript
+interface GetAvailabilityResponse {
+  availability: Availability[];
+}
+```
+
+### Add Availability for Date (POST /api/availability)
+
+**Request Body**
+
+```typescript
+interface AddAvailabilityRequest {
+  resourceId: number;
+  date: Date;
+  slots: AvailabilitySlot[];
+}
+```
+
+**Response Body**
+
+```typescript
+interface AddAvailabilityResponse {
+  availability: Availability;
+}
+```
+
+### Get Availability by ID (GET /api/availability/:id)
+
+**No Request Body**
+
+**Response Body**
+
+```typescript
+interface GetAvailabilityResponse {
+  availability: Availability;
+}
+```
+
+### Update Availability by ID (PUT /api/availability/:id)
+
+**Request Body**
+
+```typescript
+interface UpdateAvailabilityRequest {
+  slots?: AvailabilitySlot[];
+}
+```
+
+**Response Body**
+
+```typescript
+interface UpdateAvailabilityResponse {
+  availability: Availability;
+}
+```
+
+### Delete Availability by ID (DELETE /api/availability/:id)
+
+**No Request Body**
+
+**No Response Body**
+
+### Get All Users (GET /api/users)
+
+No Request Body
+
+Response Body
+
+```typescript
+interface GetAllUsersResponse {
+  users: User[];
+}
+```
+
+### Get User by ID (GET /api/users/:id)
+
+**No Request Body**
+
+**Response Body**
+
+```typescript
+interface GetUserResponse {
+  user: User;
+}
+```
+
+### Update User by ID (PUT /api/users/:id)
+
+**Request Body**
+
+```typescript
+interface UpdateUserRequest {
+  name?: string;
+  email?: string;
+  password?: string;
+}
+```
+
+**Response Body**
+
+```typescript
+interface UpdateUserResponse {
+  user: User;
+}
+```
+
+### Delete User by ID (DELETE /api/users/:id)
+
+**No Request Body**
+
+**No Response Body**
+
+Please note that these are just examples, and the actual request and response bodies may vary based on your specific project requirements. You can customize the request and response bodies by adding or removing fields as needed.
+
 ## Contributing
 
 Contributions are welcome! If you find any bugs or want to suggest new features, please open an issue or submit a pull request to the repository.
