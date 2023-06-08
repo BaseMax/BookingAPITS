@@ -57,11 +57,11 @@ The test suite includes unit tests, integration tests, and end-to-end tests to e
 | Route |	Method |	Description |
 | ----- | ------ | ------------ |
 | `/api/auth/signup` |	POST |	Register a new user account |
-| `/api/auth/login` |	POST	Authenticate and log in a user |
-| `/api/auth/logout` |	POST	Log out the currently authenticated user |
-| `/api/bookings` |	GET	Get all bookings (admin only) |
-| `/api/bookings` |	POST	Create a new booking |
-| `/api/bookings/:id` |	GET |	Get a specific booking by ID |
+| `/api/auth/login` |	POST |	Authenticate and log in a user |
+| `/api/auth/logout` |	POST |	Log out the currently authenticated user |
+| `/api/bookings` |	GET |	Get all bookings (admin only) |
+| `/api/bookings` |	POST |	Create a new booking |
+| `/api/bookings/:id` |	GET | |	Get a specific booking by ID |
 | `/api/bookings/:id` |	PUT |	Update a specific booking by ID |
 | `/api/bookings/:id` |	DELETE |	Delete a specific booking by ID |
 | `/api/availability` |	GET |	Get availability for a specific date |
