@@ -10,3 +10,54 @@ datasource db {
   url      = env("DATABASE_URL")
 }
 
+model User {
+  id        Int       @id @default(autoincrement())
+  name      String
+  email     String    @unique
+  password  String
+  isAdmin   Boolean   @default(false)
+  bookings  Booking[]
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+}
+
+model Booking {
+  id         Int      @id @default(autoincrement())
+  User       User?    @relation(fields: [userId], references: [id])
+  userId     Int?
+  startDate  DateTime
+  endDate    DateTime
+  notes      String
+  resource   Resource @relation(fields: [resourceId], references: [id])
+  resourceId Int
+  createdAt  DateTime @default(now())
+  updatedAt  DateTime @updatedAt
+}
+
+model Resource {
+  id           Int            @id @default(autoincrement())
+  name         String
+  description  String
+  Booking      Booking[]
+  Availability Availability[]
+  createdAt    DateTime       @default(now())
+  updatedAt    DateTime       @updatedAt
+}
+
+model Availability {
+  id         Int                @id @default(autoincrement())
+  date       DateTime
+  slots      AvailabilitySlot[]
+  resource   Resource           @relation(fields: [resourceId], references: [id])
+  resourceId Int
+  createdAt  DateTime           @default(now())
+  updatedAt  DateTime           @updatedAt
+}
+
+model AvailabilitySlot {
+  id             Int           @id @default(autoincrement())
+  availability   Availability? @relation(fields: [availabilityId], references: [id])
+  availabilityId Int?           
+  startTime      DateTime
+  endTime        DateTime
+}
