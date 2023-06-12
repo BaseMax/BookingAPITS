@@ -11,14 +11,15 @@ datasource db {
 }
 
 model User {
-  id        Int       @id @default(autoincrement())
-  name      String
-  email     String    @unique
-  password  String
-  isAdmin   Boolean   @default(false)
-  bookings  Booking[]
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id            Int            @id @default(autoincrement())
+  name          String
+  email         String         @unique
+  password      String
+  isAdmin       Boolean        @default(false)
+  bookings      Booking[]
+  notifications Notification[]
+  createdAt     DateTime       @default(now())
+  updatedAt     DateTime       @updatedAt
 }
 
 model Booking {
@@ -57,7 +58,17 @@ model Availability {
 model AvailabilitySlot {
   id             Int           @id @default(autoincrement())
   availability   Availability? @relation(fields: [availabilityId], references: [id])
-  availabilityId Int?           
+  availabilityId Int?
   startTime      DateTime
   endTime        DateTime
+}
+
+model Notification {
+  id                 Int    @id @default(autoincrement())
+  device_type        String
+  notification_token String
+  User               User?  @relation(fields: [userId], references: [id])
+  userId             Int?
+  title              String
+  body               String
 }

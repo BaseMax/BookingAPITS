@@ -1,14 +1,15 @@
 import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
-import { UserModule } from './user/user.module';
-import { BookingsModule } from './bookings/bookings.module';
-import { AuthModule } from './auth/auth.module';
-import { PrismaModule } from './prisma/prisma.module';
-import { ResourceModule } from './resource/resource.module';
-import { AvailabilityModule } from './availability/availability.module';
+import { UserModule } from './modules/user/user.module';
+import { BookingsModule } from './modules/bookings/bookings.module';
+import { AuthModule } from './modules/auth/auth.module';
+import { PrismaModule } from './modules/prisma/prisma.module';
+import { ResourceModule } from './modules/resource/resource.module';
+import { AvailabilityModule } from './modules/availability/availability.module';
 import { APP_INTERCEPTOR } from '@nestjs/core';
 import { PaginationInterceptor } from './interceptors/pagination.interceptor';
+import { NotificationModule } from './modules/notification/notification.module';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { PaginationInterceptor } from './interceptors/pagination.interceptor';
     PrismaModule,
     ResourceModule,
     AvailabilityModule,
+    NotificationModule,
   ],
   controllers: [AppController],
   providers: [
