@@ -1,10 +1,10 @@
 # Booking System TypeScript API
 
-This is a RESTful API built using NestJS and TypeScript that enables users to reserve appointments, services, or resources through a booking system. The API provides functionality for managing availability, user authentication, and notifications for booking confirmations or reminders.
+This is a RESTful API built using NestJS and TypeScript that enables users to reserve appointments through a booking system. The API provides functionality for managing availability, user authentication, and notifications for booking confirmations or reminders.
 
 ## Features
 
-- **Availability Management:** The API allows administrators to manage the availability of appointments, services, or resources. This includes defining working hours, blocking specific time slots, and managing overlapping bookings.
+- **Availability Management:** The API allows administrators to manage the availability of appointments, services, or resources. This includes defining working hours.
 
 - **User Authentication:** Users can sign up, log in, and manage their bookings through authenticated routes. Authentication ensures that only authorized users can access protected endpoints.
 
@@ -20,13 +20,15 @@ This is a RESTful API built using NestJS and TypeScript that enables users to re
 
 ## Configuration
 
-- Rename the `.env.example` file to `.env`.
 - Open the `.env` file and modify the configuration variables according to your needs. This may include database connection settings, authentication secrets, and email notification settings.
 
 ## Database Setup
 
 - Create a database for the application.
 - Update the `DATABASE_URL` variable in the `.env` file with your database connection string.
+
+## Firebase Setup
+-create a firebase project in fire store and import configuration into firebase-adminsdk in root of the project in json format
 
 ## Running the Application
 
@@ -73,7 +75,11 @@ The test suite includes unit tests, integration tests, and end-to-end tests to e
 | `/api/users/:id` |	GET |	Get a specific user by ID |
 | `/api/users/:id` |	PUT |	Update a specific user by ID |
 | `/api/users/:id` |	DELETE |	Delete a specific user by ID |
-
+| `/api/resource` |	POST |	Creating a new resource for any organization or services |
+| `/api/resource` |	GET |	Getting all resources available on the system |
+| `/api/resource/:id` |	PUT |	Modifying the resource |
+| `/api/resource/:id` |	DELETE |	Delete a specific resource by ID |
+| `/api/notification/:id` |	POST |	sending a notification to a specific user by id and title and body provided |
 This table provides an overview of the routes available in the Booking System API, along with their associated HTTP methods and descriptions. Please note that this is just a sample and you may have additional routes or modify the existing ones based on your specific project requirements.
 
 ## Models
@@ -87,6 +93,8 @@ interface User {
   email: string;
   password: string;
   isAdmin: boolean;
+  bookings : Booking[];
+  notifications : Notifications[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -114,6 +122,8 @@ interface Resource {
   id: number;
   name: string;
   description: string;
+  booking: Booking[];
+  Availability Availability[];
   createdAt: Date;
   updatedAt: Date;
 }
@@ -134,6 +144,16 @@ interface Availability {
 interface AvailabilitySlot {
   startTime: Date;
   endTime: Date;
+  availabilityId : number;
+}
+
+interface Notificaiton {
+  id : number;
+  device_type:  string;
+  notification_token : string;
+  userId : number;
+  title : string;
+  body : string;
 }
 ```
 
